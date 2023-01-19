@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MongoDB.Driver;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -32,5 +33,14 @@ namespace WpfApp2
             users.Add(new User("Robert", "22", "eee@aa.ru", "Security"));
             return users;
         }
+
+        public static void AddUserToDataBase(User user)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("UsersDataBase");
+            var collection = database.GetCollection<User>("Users");
+            collection.InsertOne(user);
+        }
+
     }
 }

@@ -8,8 +8,10 @@
         Title="MainWindow" Height="450" Width="860">
     <Grid>
         <ListBox x:Name="list1" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="80,10,483,16" SelectionChanged="ListBox_SelectionChanged"/>
-        <Label x:Name="lb1" Content="" HorizontalAlignment="Left" Margin="455,22,0,0" VerticalAlignment="Top" FontSize="48" Width="376"/>
-        <Label x:Name="lb3" Content="" HorizontalAlignment="Left" Margin="455,217,0,0" VerticalAlignment="Top" FontSize="48" Width="376"/>
-        <Label x:Name="lb2" Content="" HorizontalAlignment="Left" Margin="455,116,0,0" VerticalAlignment="Top" FontSize="48" Width="376"/>
+        <TextBox x:Name="txtName" HorizontalAlignment="Left" Margin="405,10,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtVac" HorizontalAlignment="Left" Margin="405,130,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtEmail" HorizontalAlignment="Left" Margin="405,91,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="txtAge" HorizontalAlignment="Left" Margin="405,48,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Button Content="ADD&#xD;&#xA;" HorizontalAlignment="Center" Margin="0,166,0,0" VerticalAlignment="Top" Height="21" Width="70" Click="Button_Click"/>
     </Grid>
 </Window>

@@ -41,9 +41,17 @@ namespace WpfApp2
         {
             var list = User.GetUsersList();
             var foundedUser = list.Find(x => x.Name == list1.SelectedItem.ToString());
-            lb1.Content = foundedUser.Name;
-            lb2.Content = foundedUser.Age;
-            lb3.Content = foundedUser.EMail;
+
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            User.AddUserToDataBase(new User(txtName.Text, txtAge.Text, 
+                txtEmail.Text, txtVac.Text));
+            txtName.Clear();
+            txtAge.Clear();
+            txtAge.Clear();
+            txtVac.Clear();
         }
     }
 }
