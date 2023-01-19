@@ -31,7 +31,7 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            foreach (var item in User.GetUsersList())
+            foreach (var item in User.GetUsersListFromDB())
             {
                 list1.Items.Add(item.Name);
             }
@@ -39,8 +39,7 @@ namespace WpfApp2
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            var list = User.GetUsersList();
-            var foundedUser = list.Find(x => x.Name == list1.SelectedItem.ToString());
+            
 
         }
 

@@ -1,4 +1,5 @@
-﻿using MongoDB.Driver;
+﻿using MongoDB.Bson;
+using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,6 +18,7 @@ namespace WpfApp2
             Vacancy = vac;
         }
 
+        public ObjectId _id { get; set; }
         public string Name { get; set; }
         public string Age { get; set; }
         public string EMail { get; set; }
@@ -40,6 +42,16 @@ namespace WpfApp2
             var database = client.GetDatabase("UsersDataBase");
             var collection = database.GetCollection<User>("Users");
             collection.InsertOne(user);
+        }
+
+        public static List<User> GetUsersListFromDB()
+        {
+            List<User> users = new List<User>();
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("UsersDataBase");
+            var collection = database.GetCollection<User>("Users");
+            users = collection.Find(x => true).ToList();
+            return users;
         }
 
     }
