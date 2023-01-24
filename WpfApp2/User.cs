@@ -1,4 +1,5 @@
 ﻿using MongoDB.Bson;
+using MongoDB.Bson.Serialization.Attributes;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -15,14 +16,18 @@ namespace WpfApp2
             Name = name;
             Age = age;
             EMail = eMail;
-            Vacancy = vac;
+            Vacancy = vac;        
         }
 
-        public ObjectId _id { get; set; }
+
+
+        [BsonIgnoreIfDefault] public ObjectId _id { get; set; }
         public string Name { get; set; }
         public string Age { get; set; }
         public string EMail { get; set; }
+    
         public string Vacancy { get; set; }
+
 
 
         public static List<User> GetUsersList()
@@ -52,6 +57,14 @@ namespace WpfApp2
             var collection = database.GetCollection<User>("Users");
             users = collection.Find(x => true).ToList();
             return users;
+        }
+
+        public static void EditUser(User user, string name)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("UsersDataBase");
+            var collection = database.GetCollection<User>("Users");
+            collection.ReplaceOne(x => x.Name == name, user);
         }
 
     }
