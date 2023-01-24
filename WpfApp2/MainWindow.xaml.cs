@@ -31,10 +31,7 @@ namespace WpfApp2
         public MainWindow()
         {
             InitializeComponent();
-            foreach (var item in User.GetUsersListFromDB())
-            {
-                list1.Items.Add(item.Name);
-            }
+            ListUsersRefresh();
         }
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -47,10 +44,21 @@ namespace WpfApp2
         {
             User.AddUserToDataBase(new User(txtName.Text, txtAge.Text, 
                 txtEmail.Text, txtVac.Text));
+            ListUsersRefresh();
             txtName.Clear();
             txtAge.Clear();
             txtAge.Clear();
             txtVac.Clear();
+        }
+
+
+        private void ListUsersRefresh()
+        {
+            list1.Items.Clear();
+            foreach (var item in User.GetUsersListFromDB())
+            {
+                list1.Items.Add(item.Name);
+            }
         }
     }
 }
