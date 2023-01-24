@@ -36,7 +36,7 @@ namespace WpfApp2
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            
+            User foundedUser = GetUserFromLocal(list1.SelectedItem.ToString());
 
         }
 
@@ -47,7 +47,7 @@ namespace WpfApp2
             ListUsersRefresh();
             txtName.Clear();
             txtAge.Clear();
-            txtAge.Clear();
+            txtEmail.Clear();
             txtVac.Clear();
         }
 
@@ -59,6 +59,17 @@ namespace WpfApp2
             {
                 list1.Items.Add(item.Name);
             }
+        }
+
+        private User GetUserFromLocal(string name)
+        {
+            var list = User.GetUsersListFromDB();
+            return list.Find(x => x.Name == name);
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
