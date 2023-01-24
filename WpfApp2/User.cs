@@ -16,7 +16,8 @@ namespace WpfApp2
             Name = name;
             Age = age;
             EMail = eMail;
-            Vacancy = vac;        
+            Vacancy = vac;
+            Passport = new Passport("123", "98762748");
         }
 
 
@@ -27,6 +28,8 @@ namespace WpfApp2
         public string EMail { get; set; }
     
         public string Vacancy { get; set; }
+
+        public Passport Passport { get; set; }
 
 
 

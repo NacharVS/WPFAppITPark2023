@@ -75,7 +75,9 @@ namespace WpfApp2
 
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            //User.EditUser();
+            User.EditUser(new User(txtName.Text, txtAge.Text,
+                txtEmail.Text, txtVac.Text), list1.SelectedItem.ToString());
+            ListUsersRefresh();
         }
     }
 }
