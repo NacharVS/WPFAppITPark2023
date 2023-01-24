@@ -36,8 +36,14 @@ namespace WpfApp2
 
         private void ListBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            User foundedUser = GetUserFromLocal(list1.SelectedItem.ToString());
-
+            if (list1.SelectedItem != null)
+            {
+                User foundedUser = GetUserFromLocal(list1.SelectedItem.ToString());
+                txtName.Text = foundedUser.Name;
+                txtAge.Text = foundedUser.Age;
+                txtEmail.Text = foundedUser.EMail;
+                txtVac.Text = foundedUser.Vacancy;
+            }
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
